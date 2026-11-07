@@ -1,0 +1,25 @@
+GastosPro para Revolut — PWA
+
+PUBLICAR / ACTUALIZAR
+1. Sube los archivos de este ZIP a la raíz de tu repositorio GitHub (incluidos index.html, add.html, manifest.webmanifest, sw.js e icon.svg), sustituyendo los archivos existentes si te lo pregunta.
+2. GitHub → Settings → Pages: Source = Deploy from a branch; Branch = main; carpeta = /(root).
+3. Abre la URL publicada en Safari en el iPhone y comprueba que GastosPro carga.
+
+ATAJO “Añadir gasto”
+Crea un atajo con estas acciones:
+1. “Solicitar entrada” → tipo Número → pregunta “¿Cuánto has gastado?”; guarda el resultado como Importe.
+2. “Elegir de la lista” con: Comida, Coche, Casa, Compras, Ocio, Transporte, Suscripciones, Salud, Otros; guarda como Categoría.
+3. “Solicitar entrada” → tipo Texto → pregunta “¿En qué has gastado? (opcional)”; guarda como Concepto.
+4. Añade acción “URL”. Usa la URL publicada y la ruta add.html, por ejemplo:
+   https://TUUSUARIO.github.io/gastospro/add.html
+   Añade parámetros de consulta: amount = Importe, category = Categoría, description = Concepto.
+   Si la acción URL no permite añadir parámetros de consulta, crea una acción “Texto” con esta estructura y sustituye los marcadores por las variables mágicas:
+   https://TUUSUARIO.github.io/gastospro/add.html?amount=[Importe]&category=[Categoría]&description=[Concepto]
+   Después usa “Codificar URL” para el concepto si hace falta; la opción preferible es construir URL con parámetros de consulta para que espacios y tildes se codifiquen correctamente.
+5. Añade acción “Abrir URL”. Ejecuta el atajo una vez y comprueba que muestra “¡Gasto guardado!”.
+6. Centro de control → añadir control → Atajos → elige “Añadir gasto”.
+
+IMPORTANTE
+- El atajo abre brevemente una página de confirmación en Safari: iOS necesita cargar esa página para guardar el gasto en el almacenamiento local de GastosPro.
+- Debe usarse el mismo navegador/origen (Safari y la URL de GitHub Pages) que usa GastosPro. No borres los datos de Safari si quieres conservar tus movimientos.
+- Los datos se guardan localmente en ese iPhone y no se sincronizan con Revolut ni con otros dispositivos automáticamente. Exporta CSV periódicamente.
